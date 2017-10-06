@@ -12,17 +12,22 @@ public class GameMngr : MonoBehaviour {
 	public float SpawnTime = 10f;
 
 	public GameObject[] MonstreLettre;
+	public GameObject cloudPuff;
+	public GameObject Tower;
+	public GameObject TowerMask;
 	
 	private List <string> SpawMonster;
 
 	private float timeLeft;
 	private int monsterID;
+	private int TowerFall;
 
 	void Start(){
 		
 		SpawMonster = new List<string> ();
 		timeLeft = 0f;
 		monsterID = 0;
+		TowerFall = 0;
 	}
 
 	void Update () {
@@ -58,6 +63,10 @@ public class GameMngr : MonoBehaviour {
 
 								if (TargetLetter != null) {
 									
+									for (int z = 1; z < 6; z++) {
+										Instantiate (cloudPuff, TargetLetter.transform.position + new Vector3(0f,2f,0f), Quaternion.identity);
+									}
+
 									SpawMonster.RemoveAt (i);
 									Destroy (TargetLetter);
 
@@ -76,8 +85,14 @@ public class GameMngr : MonoBehaviour {
 				}
 			}
 		}
+
+		if ( TowerFall > 0 ){
+			Tower.transform.Translate (Vector3.down * 0.25f);
+			TowerFall -= 1;
+		}
 	}
 	void OnTriggerEnter2D( Collider2D MonstreEntry){
+		
 		int MonsterID = SpawMonster.IndexOf(MonstreEntry.name);
 
 		SpawMonster.RemoveAt (MonsterID);
@@ -87,5 +102,9 @@ public class GameMngr : MonoBehaviour {
 		GameObject keyHelper = GameObject.Find(letter + "_key");
 		keyHelper.GetComponent<SpriteRenderer> ().color = new Color (1f,1f,1f);
 
+		for (int z = 1; z < 10; z++) {
+			Instantiate (cloudPuff, TowerMask.transform.position + new Vector3(z - 5f, 0f, 0f), Quaternion.identity);
+		}
+		TowerFall = 10;
 	}
 }

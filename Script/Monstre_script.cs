@@ -34,11 +34,11 @@ public class Monstre_script : MonoBehaviour {
 		JumpSpeed = MonstreValue.JumpSpeed * mutation;
 		JumpHeight = MonstreValue.JumpHeight * mutation;
 		JumpSquash = MonstreValue.JumpSquash * mutation;
-		AttSpeed = MonstreValue.AttSpeed;
+		AttSpeed = MonstreValue.AttSpeed * -1f;
 
 		posInitY = 5f;
 		JumpHold = true;
-		this.transform.position = new Vector3 (-1f, posInitY, 0f);
+		this.transform.position = new Vector3 (36f, posInitY, 0f);
 	}
 
 
