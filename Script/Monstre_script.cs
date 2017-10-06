@@ -18,6 +18,7 @@ public class Monstre_script : MonoBehaviour {
 	private int JumpHoldTime;
 	private float AttSpeedFactor;
 	private int MonsterHeight;
+	private float ScaleInit;
 
 	private GameObject keyHelper;
 	private Color keyHelperColor = new Color (1f, 1f, 1f);
@@ -27,16 +28,19 @@ public class Monstre_script : MonoBehaviour {
 		GameObject Castle_GameMngr = GameObject.Find("Castle_GameMngr");
 		GameMngr MonstreValue = Castle_GameMngr.GetComponent<GameMngr>();
 
-		string letter = this.name [0].ToString () + "_key";
+		string letter = this.name [0].ToString ();
+		letter = letter.ToUpper() + "_key";
 		keyHelper = GameObject.Find(letter);
 
 		float mutation = Random.Range (0.9f, 1.125f);
 		JumpSpeed = MonstreValue.JumpSpeed * mutation;
 		JumpHeight = MonstreValue.JumpHeight * mutation;
+		//JumpHeight = this.transform.localScale.x;
 		JumpSquash = MonstreValue.JumpSquash * mutation;
 		AttSpeed = MonstreValue.AttSpeed * -1f;
 
 		posInitY = 5f;
+		ScaleInit = this.transform.localScale.x;
 		JumpHold = true;
 		this.transform.position = new Vector3 (36f, posInitY, 0f);
 	}
@@ -48,12 +52,11 @@ public class Monstre_script : MonoBehaviour {
 		float sinF = Mathf.Sin (Time.fixedTime * JumpSpeed);
 		//Jumping
 		JumpFactor = sinF * JumpHeight;
-		transform.localScale = new Vector3 (1f, 1f + sinF * JumpSquash, 1f);
+
 
 		//Moving forward
 		if (sinF <= 0f) 
 		{
-			JumpFactor = 0f;
 			AttSpeedFactor = 0f;
 			if (JumpHold == true) 
 			{
@@ -64,15 +67,14 @@ public class Monstre_script : MonoBehaviour {
 
 		} else {
 			JumpHold = true;
-			if (JumpHoldTime > 2) 
-			{
-				AttSpeedFactor = AttSpeed;
+			if (JumpHoldTime > 2) {
+				AttSpeedFactor = 1f;
 				JumpHoldTime = 0;
 			}
 			keyHelper.GetComponent<SpriteRenderer> ().color = new Color(1f,1f,1f);
 		}
-
-		transform.position = new Vector3( (transform.position.x + AttSpeedFactor * Time.deltaTime), posInitY + JumpFactor, 0f);
+		transform.localScale = new Vector3 (ScaleInit, ScaleInit + sinF * JumpSquash, 1f);
+		transform.position = new Vector3( (transform.position.x + AttSpeed * AttSpeedFactor * Time.deltaTime), posInitY + JumpFactor * AttSpeedFactor, 0f);
 
 	}
 
