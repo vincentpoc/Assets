@@ -5,21 +5,17 @@ using UnityEngine;
 public class GlobalValue : MonoBehaviour {
 
 	public static GlobalValue instance;
-	/*
+
 	public float JumpSpeed = 10.0f;
 	public float JumpHeight = 2f;
 	public float JumpSquash = 0.2f;
 	public float AttSpeed = 4f;
-	public float SpawnTime = 4f;
+	public float SpawnTime = 2.1f;
+	public int JumpTime = 2;
 
 	// Use this for initialization
 	void Start () {
-		
+		instance = this;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-	*/
+
 }

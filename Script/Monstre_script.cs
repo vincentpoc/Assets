@@ -25,23 +25,24 @@ public class Monstre_script : MonoBehaviour {
 
 	void Start () {
 
-		GameObject Castle_GameMngr = GameObject.Find("Castle_GameMngr");
-		GameMngr MonstreValue = Castle_GameMngr.GetComponent<GameMngr>();
+		//GameObject Castle_GameMngr = GameObject.Find("Castle_GameMngr");
+		//GameMngr MonstreValue = Castle_GameMngr.GetComponent<GameMngr>();
 
 		string letter = this.name [0].ToString ();
 		letter = letter.ToUpper() + "_key";
 		keyHelper = GameObject.Find(letter);
 
 		float mutation = Random.Range (0.9f, 1.125f);
-		JumpSpeed = MonstreValue.JumpSpeed * mutation;
-		JumpHeight = MonstreValue.JumpHeight * mutation;
+		JumpSpeed = GlobalValue.instance.JumpSpeed * mutation;
+		JumpHeight = GlobalValue.instance.JumpHeight * mutation;
 		//JumpHeight = this.transform.localScale.x;
-		JumpSquash = MonstreValue.JumpSquash * mutation;
-		AttSpeed = MonstreValue.AttSpeed * -1f;
+		JumpSquash = GlobalValue.instance.JumpSquash * mutation;
+		AttSpeed = GlobalValue.instance.AttSpeed * -1f;
 
 		posInitY = 5f;
 		ScaleInit = this.transform.localScale.x;
 		JumpHold = true;
+		JumpHoldTime = GlobalValue.instance.JumpTime;
 		this.transform.position = new Vector3 (36f, posInitY, 0f);
 	}
 
@@ -50,9 +51,7 @@ public class Monstre_script : MonoBehaviour {
 	void Update () {
 
 		float sinF = Mathf.Sin (Time.fixedTime * JumpSpeed);
-		//Jumping
 		JumpFactor = sinF * JumpHeight;
-
 
 		//Moving forward
 		if (sinF <= 0f) 
@@ -67,7 +66,7 @@ public class Monstre_script : MonoBehaviour {
 
 		} else {
 			JumpHold = true;
-			if (JumpHoldTime > 2) {
+			if (JumpHoldTime > GlobalValue.instance.JumpTime) {
 				AttSpeedFactor = 1f;
 				JumpHoldTime = 0;
 			}
@@ -79,7 +78,6 @@ public class Monstre_script : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D collision) {
-		//Debug.Log (collision);
 		if (collision.gameObject.tag == "warningZone"){
 			keyHelperColor = new Color (0f, 1f, 0f);
 		}

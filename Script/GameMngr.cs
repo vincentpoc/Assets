@@ -5,12 +5,13 @@ using Random = UnityEngine.Random;
 
 public class GameMngr : MonoBehaviour {
 
+	/*
 	public float JumpSpeed = 10.0f;
 	public float JumpHeight = 2f;
 	public float JumpSquash = 0.2f;
 	public float AttSpeed = 4f;
 	public float SpawnTime = 4f;
-
+	*/
 	public GameObject[] MonstreLettre;
 	public GameObject cloudPuff;
 	public GameObject Tower;
@@ -40,7 +41,7 @@ public class GameMngr : MonoBehaviour {
 		
 		timeLeft -= Time.deltaTime;
 
-		if ( timeLeft < 0 ){
+		if ( timeLeft < 0 || SpawMonster.Count == 0){
 
 			int letterID = MonstreIndex.IndexOf (WordDict [WordIndex].ToString ());
 			if (letterID > 0) {
@@ -57,7 +58,7 @@ public class GameMngr : MonoBehaviour {
 			}
 
 			monsterID++;
-			timeLeft = SpawnTime + Random.Range(0f,1f);
+			timeLeft = GlobalValue.instance.SpawnTime + Random.Range(0f,1f);
 
 		}
 
@@ -93,8 +94,9 @@ public class GameMngr : MonoBehaviour {
 									GameObject keyHelper = GameObject.Find(gName.ToUpper() + "_key");
 									keyHelper.GetComponent<SpriteRenderer> ().color = new Color (1f,1f,1f);
 
-									//AttSpeed += 0.1;
-									//SpawnTime *= 0.9;
+									GlobalValue.instance.AttSpeed += 0.1f;
+									GlobalValue.instance.JumpSpeed += 0.125f;
+									GlobalValue.instance.SpawnTime *= 0.975f;
 
 									isUnique = false;
 									break;
