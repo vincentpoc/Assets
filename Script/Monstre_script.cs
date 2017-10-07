@@ -20,6 +20,8 @@ public class Monstre_script : MonoBehaviour {
 	private int MonsterHeight;
 	private float ScaleInit;
 
+	private int JumpHoldMax = 0;
+
 	private GameObject keyHelper;
 	private Color keyHelperColor = new Color (1f, 1f, 1f);
 
@@ -66,7 +68,7 @@ public class Monstre_script : MonoBehaviour {
 
 		} else {
 			JumpHold = true;
-			if (JumpHoldTime > GlobalValue.instance.JumpTime) {
+			if (JumpHoldTime > JumpHoldMax) { //GlobalValue.instance.JumpTime
 				AttSpeedFactor = 1f;
 				JumpHoldTime = 0;
 			}
@@ -80,6 +82,7 @@ public class Monstre_script : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.gameObject.tag == "warningZone"){
 			keyHelperColor = new Color (0f, 1f, 0f);
+			JumpHoldMax = 2;
 		}
 	}
 }

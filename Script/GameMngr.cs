@@ -62,7 +62,7 @@ public class GameMngr : MonoBehaviour {
 		if ( timeLeft < 0 || SpawMonster.Count == 0){
 
 			int letterID = MonstreIndex.IndexOf (WordDict[WordLevel][LetterIndex].ToString ());
-			if (letterID > 0) {
+			if (letterID != -1) {
 				GameObject MonsterObject = Instantiate (MonstreLettre [letterID], new Vector3 (0f, 2.8f, 0f), Quaternion.identity);
 
 				MonsterObject.name += monsterID;
