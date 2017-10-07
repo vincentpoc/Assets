@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class GameMngr : MonoBehaviour {
@@ -16,11 +18,14 @@ public class GameMngr : MonoBehaviour {
 	public GameObject cloudPuff;
 	public GameObject Tower;
 	public GameObject TowerMask;
+	public TextAsset WordDicFile;
+	public Text UItext;
 	
 	private List <string> SpawMonster = new List<string> ();
 	private List <string> MonstreIndex = new List<string>();
-	private string WordDict = "qwe TY asd GH zxc VB Edouard Querbes Aksel Eloit";
-	private int WordIndex = 0;
+	private List <string> WordDict = new List<string>();
+	private int WordLevel = 0;
+	private int LetterIndex = 0;
 
 	private float timeLeft = 0f;
 	private int monsterID = 0;
@@ -28,13 +33,26 @@ public class GameMngr : MonoBehaviour {
 
 	void Start(){
 		
-		//SpawMonster = new List<string> ();
-		//timeLeft = 0f;
-		//monsterID = 0;
-		//TowerFall = 0;
 		foreach (GameObject n in MonstreLettre) {
 			MonstreIndex.Add (n.name [0].ToString ());
 		}
+		//Build WordDictionnary
+		/*
+		string path = "Assets/Resources/WordDict.txt";
+		StreamReader reader = new StreamReader(path);
+
+		string WordData;
+		do{
+			WordData = reader.ReadLine ();
+			WordDict.Add(WordData);
+		}while(WordData != null);
+		*/
+		string WordDictText = WordDicFile.text.ToString ();
+		string[] WordDictList = WordDictText.Split('#');
+		foreach (string w in WordDictList) {
+			WordDict.Add (w);
+		}
+		UItext.text = "Level " + WordLevel.ToString ();
 	}
 
 	void Update () {
@@ -43,7 +61,7 @@ public class GameMngr : MonoBehaviour {
 
 		if ( timeLeft < 0 || SpawMonster.Count == 0){
 
-			int letterID = MonstreIndex.IndexOf (WordDict [WordIndex].ToString ());
+			int letterID = MonstreIndex.IndexOf (WordDict[WordLevel][LetterIndex].ToString ());
 			if (letterID > 0) {
 				GameObject MonsterObject = Instantiate (MonstreLettre [letterID], new Vector3 (0f, 2.8f, 0f), Quaternion.identity);
 
@@ -52,9 +70,16 @@ public class GameMngr : MonoBehaviour {
 				SpawMonster.Add (MonsterObject.name);
 			}
 
-			WordIndex++;
-			if (WordIndex >= WordDict.Length){
-				WordIndex = 0;
+			LetterIndex++;
+			if (LetterIndex >= WordDict[WordLevel].Length){
+				WordLevel++;
+				LetterIndex = 0;
+
+				GlobalValue.instance.AttSpeed += 0.25f;
+				GlobalValue.instance.JumpSpeed += 0.25f;
+				GlobalValue.instance.SpawnTime *= 0.9f;
+
+				UItext.text = "Level " + WordLevel.ToString ();
 			}
 
 			monsterID++;
@@ -93,10 +118,6 @@ public class GameMngr : MonoBehaviour {
 									//REset keyboard helper
 									GameObject keyHelper = GameObject.Find(gName.ToUpper() + "_key");
 									keyHelper.GetComponent<SpriteRenderer> ().color = new Color (1f,1f,1f);
-
-									GlobalValue.instance.AttSpeed += 0.1f;
-									GlobalValue.instance.JumpSpeed += 0.125f;
-									GlobalValue.instance.SpawnTime *= 0.975f;
 
 									isUnique = false;
 									break;
