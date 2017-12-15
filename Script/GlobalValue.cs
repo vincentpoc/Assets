@@ -12,6 +12,8 @@ public class GlobalValue : MonoBehaviour {
 	public float AttSpeed = 4f;
 	public float SpawnTime = 2.1f;
 	public int JumpTime = 2;
+	public float LevelScale = 1f;
+	public float JumpScale = 1f;
 
 	// Use this for initialization
 	void Start () {

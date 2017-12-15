@@ -20,7 +20,7 @@ public class Monstre_script : MonoBehaviour {
 	private int MonsterHeight;
 	private float ScaleInit;
 
-	private int JumpHoldMax = 0;
+	private int JumpHoldMax;
 
 	private GameObject keyHelper;
 	private Color keyHelperColor = new Color (1f, 1f, 1f);
@@ -34,12 +34,13 @@ public class Monstre_script : MonoBehaviour {
 		letter = letter.ToUpper() + "_key";
 		keyHelper = GameObject.Find(letter);
 
-		float mutation = Random.Range (0.9f, 1.125f);
-		JumpSpeed = GlobalValue.instance.JumpSpeed * mutation;
+		float mutation = Random.Range (0.9f, 1.2f);
+		JumpSpeed = GlobalValue.instance.JumpSpeed;
 		JumpHeight = GlobalValue.instance.JumpHeight * mutation;
 		//JumpHeight = this.transform.localScale.x;
 		JumpSquash = GlobalValue.instance.JumpSquash * mutation;
 		AttSpeed = GlobalValue.instance.AttSpeed * -1f;
+		JumpHoldMax = 2;
 
 		posInitY = 5f;
 		ScaleInit = this.transform.localScale.x;
@@ -68,21 +69,25 @@ public class Monstre_script : MonoBehaviour {
 
 		} else {
 			JumpHold = true;
-			if (JumpHoldTime > JumpHoldMax) { //GlobalValue.instance.JumpTime
-				AttSpeedFactor = 1f;
+			if (JumpHoldTime > JumpHoldMax + GlobalValue.instance.LevelScale) { //GlobalValue.instance.JumpTime
+				AttSpeedFactor = 1f * GlobalValue.instance.LevelScale;
 				JumpHoldTime = 0;
 			}
 			keyHelper.GetComponent<SpriteRenderer> ().color = new Color(1f,1f,1f);
 		}
-		transform.localScale = new Vector3 (ScaleInit, ScaleInit + sinF * JumpSquash, 1f);
-		transform.position = new Vector3( (transform.position.x + AttSpeed * AttSpeedFactor * Time.deltaTime), posInitY + JumpFactor * AttSpeedFactor, 0f);
-
+		transform.localScale = new Vector3 (ScaleInit, ScaleInit + sinF * JumpSquash * GlobalValue.instance.JumpScale, 1f);
+		transform.position = new Vector3( (transform.position.x + AttSpeed * AttSpeedFactor * Time.deltaTime * GlobalValue.instance.LevelScale), posInitY + JumpFactor * AttSpeedFactor * GlobalValue.instance.JumpScale, 0f);
+		//transform.rotation(Quaternion.identity);
 	}
-
 	void OnTriggerEnter2D(Collider2D collision) {
-		if (collision.gameObject.tag == "warningZone"){
+		if (collision.gameObject.tag != "warningZone") {
+			/*
 			keyHelperColor = new Color (0f, 1f, 0f);
 			JumpHoldMax = 2;
+			JumpSpeed = GlobalValue.instance.JumpSpeed;
+			*/
+			JumpHeight = GlobalValue.instance.JumpHeight * 2f;
+
 		}
 	}
 }
