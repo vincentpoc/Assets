@@ -28,13 +28,13 @@ public class GameMngr : MonoBehaviour {
 	private List <string> MonstreIndex = new List<string>();
 	private List <string> WordDict = new List<string>();
 	private int WordLevel = 0;
-	private int LetterIndex = 0;
+	//private int LetterIndex = 0;
 
 	private float timeLeft = 0f;
 	private int monsterID = 0;
-	private int TowerFall = 0;
+	private float TowerFall = 0f;
 	private bool Overlap = false;
-	private int Life = 9;
+	private int Life = 12;
 
 	void Start(){
 
@@ -55,7 +55,7 @@ public class GameMngr : MonoBehaviour {
 		}while(WordData != null);
 		*/
 		string WordDictText = WordDicFile.text.ToString ();
-		string[] WordDictList = WordDictText.Split('#');
+		string[] WordDictList = WordDictText.Split(' ');
 		foreach (string w in WordDictList) {
 			WordDict.Add (w);
 		}
@@ -71,7 +71,7 @@ public class GameMngr : MonoBehaviour {
 		GlobalValue.instance.JumpScale = jumpSlider.value;
 
 		if (Life > 0) {
-			if (timeLeft < 0 || SpawMonster.Count == 0) {
+			if (timeLeft < 0 && SpawMonster.Count == 0) {
 				
 				Overlap = false;
 				for (int i = 0; i < SpawMonster.Count; i++) {
@@ -86,33 +86,30 @@ public class GameMngr : MonoBehaviour {
 				}
 						
 				if (Overlap == false) {
-							
-					int letterID = MonstreIndex.IndexOf (WordDict [WordLevel] [LetterIndex].ToString ());
-					if (letterID != -1) {
-						GameObject MonsterObject = Instantiate (MonstreLettre [letterID], new Vector3 (0f, 2.8f, 0f), Quaternion.identity);
+					for(int LetterIndex = 0; LetterIndex< WordDict[WordLevel].Length; LetterIndex++){		
+						int letterID = MonstreIndex.IndexOf (WordDict [WordLevel] [LetterIndex].ToString ());
+						if (letterID != -1) {
+							GameObject MonsterObject = Instantiate (MonstreLettre [letterID], new Vector3 (36f + (1.5f * LetterIndex), 2.5f, 0f), Quaternion.identity);
 
-						MonsterObject.name += monsterID;
-						MonsterObject.GetComponent<SpriteRenderer> ().color = new Color (Random.Range (0.25f, 1f), Random.Range (0.25f, 1f), Random.Range (0.25f, 1f));
-						SpawMonster.Add (MonsterObject.name);
+							MonsterObject.name += monsterID;
+							//MonsterObject.offset = LetterIndex;
+							MonsterObject.GetComponent<SpriteRenderer> ().color = new Color (Random.Range (0.25f, 1f), Random.Range (0.25f, 1f), Random.Range (0.25f, 1f));
+							SpawMonster.Add (MonsterObject.name);
+							monsterID++;
 
-						timeLeft = GlobalValue.instance.SpawnTime + (GlobalValue.instance.LevelScale * 0.25f);
-					} else {
-						timeLeft = GlobalValue.instance.SpawnTime + 6f;
+						}
+
 					}
+					timeLeft = GlobalValue.instance.SpawnTime + 12f + (GlobalValue.instance.LevelScale * 0.25f);
+					WordLevel++;
+					
+					/*
+					GlobalValue.instance.AttSpeed += 0.25f;
+					GlobalValue.instance.JumpSpeed += 0.25f;
+					GlobalValue.instance.SpawnTime *= 0.9f;
+					*/
+					UItext.text = "Level " + WordLevel.ToString ();
 
-					LetterIndex++;
-					if (LetterIndex >= WordDict [WordLevel].Length) {
-						WordLevel++;
-						LetterIndex = 0;
-						/*
-						GlobalValue.instance.AttSpeed += 0.25f;
-						GlobalValue.instance.JumpSpeed += 0.25f;
-						GlobalValue.instance.SpawnTime *= 0.9f;
-						*/
-						UItext.text = "Level " + WordLevel.ToString ();
-					}
-
-					monsterID++;
 
 				}
 			}
@@ -165,7 +162,7 @@ public class GameMngr : MonoBehaviour {
 
 		if ( TowerFall > 0 ){
 			Tower.transform.Translate (Vector3.down * 0.25f);		
-			Tower.transform.Translate (Vector3.left * Mathf.Sin(TowerFall * 1.125f) * 0.4f);
+			//Tower.transform.Translate (Vector3.left * Mathf.Sin(TowerFall * 0.5f) * 0.4f);
 			TowerFall --;
 
 		}
@@ -188,7 +185,7 @@ public class GameMngr : MonoBehaviour {
 		SpawMonster.RemoveAt (MonsterID);
 		Destroy (MonstreEntry.gameObject);
 
-		TowerFall = 5;
+		TowerFall = 4.0f;
 
 		Life--;
 		Debug.Log (Life);

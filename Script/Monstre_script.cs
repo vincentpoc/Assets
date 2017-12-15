@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public class Monstre_script : MonoBehaviour {
 
 	public string KeyID;
+	public int offset;
 
 	private float JumpSpeed;
 	private float JumpHeight;
@@ -46,7 +47,7 @@ public class Monstre_script : MonoBehaviour {
 		ScaleInit = this.transform.localScale.x;
 		JumpHold = true;
 		JumpHoldTime = GlobalValue.instance.JumpTime;
-		this.transform.position = new Vector3 (36f, posInitY, 0f);
+		this.transform.position = new Vector3 (this.transform.position.x, posInitY, 0f);
 	}
 
 
