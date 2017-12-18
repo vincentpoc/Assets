@@ -100,7 +100,7 @@ public class GameMngr : MonoBehaviour {
 						}
 
 					}
-					timeLeft = GlobalValue.instance.SpawnTime + 12f + (GlobalValue.instance.LevelScale * 0.25f);
+					timeLeft = GlobalValue.instance.SpawnTime + 2f;
 					WordLevel++;
 					
 					/*
