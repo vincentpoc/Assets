@@ -265,7 +265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &90923558
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2289,7 +2289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MonstreLettre:
-  - {fileID: 1529980900866584, guid: 78e5e3ae86ae647459c55d6afe326f5e, type: 2}
+  - {fileID: 1960644720812486, guid: 78e5e3ae86ae647459c55d6afe326f5e, type: 2}
   - {fileID: 1993009798243828, guid: 42e78c3631e4b7143b5cdf4e493b89f3, type: 2}
   - {fileID: 1134191680981966, guid: 35a8aa07010a56343967a3cbcc94fdd4, type: 2}
   - {fileID: 1508173712519498, guid: f625322a715a025439064c09bcaee708, type: 2}
@@ -2341,6 +2341,10 @@ MonoBehaviour:
   - {fileID: 1541957221587614, guid: afd0e3900e69ce643baf5ac48cf07f40, type: 2}
   - {fileID: 1177148595589310, guid: a4d976280d317174e86599b640eae0b8, type: 2}
   - {fileID: 1148723445935074, guid: aefc76e0aed2db3428412c1fb24cda04, type: 2}
+  MonstrePacList:
+  - {fileID: 1515843837712682, guid: aa16bba837668014ea184a7bb82d6696, type: 2}
+  - {fileID: 1591739726571534, guid: b5e8af67ce15a324ea294035fdd34949, type: 2}
+  - {fileID: 1247562636275572, guid: 364db0678efc4a1419bf7de66451ff1c, type: 2}
   cloudPuff: {fileID: 1098161338143856, guid: 320238508ae2066428421cc63cb09bcc, type: 2}
   Tower: {fileID: 89806720}
   TowerMask: {fileID: 1322602130}

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 2eb42e0a34f96b546aff14922bcc0210
-timeCreated: 1507312331
+timeCreated: 1519100205
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -14,7 +14,7 @@ TextureImporter:
     21300014: x
     21300016: y
     21300018: z
-    21300020: 7
+    21300020: phil
     21300022: 8
     21300024: 9
     21300026: 0
@@ -70,7 +70,7 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -78,7 +78,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -86,7 +86,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: WebGL
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -116,10 +116,10 @@ TextureImporter:
         serializedVersion: 2
         x: 256
         y: 768
-        width: 256
+        width: 175
         height: 256
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.49740183, y: -0.00000047683716}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -128,8 +128,8 @@ TextureImporter:
       name: s
       rect:
         serializedVersion: 2
-        x: 512
-        y: 768
+        x: 499
+        y: 759
         width: 256
         height: 256
       alignment: 7
@@ -142,8 +142,8 @@ TextureImporter:
       name: t
       rect:
         serializedVersion: 2
-        x: 768
-        y: 768
+        x: 730
+        y: 757
         width: 256
         height: 256
       alignment: 7
@@ -157,8 +157,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 512
-        width: 256
+        y: 510
+        width: 240
         height: 256
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -170,8 +170,8 @@ TextureImporter:
       name: v
       rect:
         serializedVersion: 2
-        x: 256
-        y: 512
+        x: 232
+        y: 504
         width: 256
         height: 256
       alignment: 7
@@ -184,7 +184,7 @@ TextureImporter:
       name: w
       rect:
         serializedVersion: 2
-        x: 512
+        x: 520
         y: 512
         width: 256
         height: 256
@@ -198,9 +198,9 @@ TextureImporter:
       name: x
       rect:
         serializedVersion: 2
-        x: 768
+        x: 745
         y: 512
-        width: 256
+        width: 229
         height: 256
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -212,13 +212,13 @@ TextureImporter:
       name: y
       rect:
         serializedVersion: 2
-        x: 0
+        x: 54
         y: 256
-        width: 256
-        height: 256
+        width: 202
+        height: 243
       alignment: 7
       pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 31, y: 0, z: 0, w: 32}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -226,10 +226,10 @@ TextureImporter:
       name: z
       rect:
         serializedVersion: 2
-        x: 256
+        x: 272
         y: 256
-        width: 256
-        height: 256
+        width: 240
+        height: 209
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,57 +237,15 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: 7
+      name: phil
       rect:
         serializedVersion: 2
         x: 512
-        y: 256
-        width: 256
-        height: 256
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 8
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 256
-        width: 256
-        height: 256
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 9
-      rect:
-        serializedVersion: 2
-        x: 0
         y: 0
-        width: 256
-        height: 256
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 0
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 256
-        height: 256
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 512
+        height: 512
+      alignment: 9
+      pivot: {x: 0.6576823, y: -0.007334154}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
