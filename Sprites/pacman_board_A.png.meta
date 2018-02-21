@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 190dbe1a500bdd542bee79931806dc5e
-timeCreated: 1519096321
+timeCreated: 1519185962
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,16 @@ TextureImporter:
     21300006: pacman_board_A_3
     21300008: pacman_board_A_4
     21300010: pacman_board_A_5
+    21300012: pacman_board_A_6
+    21300014: pacman_board_A_7
+    21300016: pacman_board_A_8
+    21300018: pacman_board_A_9
+    21300020: pacman_board_A_10
+    21300022: pacman_board_A_11
+    21300024: pacman_board_A_12
+    21300026: pacman_board_A_13
+    21300028: pacman_board_A_14
+    21300030: pacman_board_A_15
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -36,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 1
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -62,25 +72,25 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Standalone
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: WebGL
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,8 +106,8 @@ TextureImporter:
         y: 1536
         width: 512
         height: 512
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.49567336, y: 0.054083347}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -110,8 +120,8 @@ TextureImporter:
         y: 1536
         width: 512
         height: 512
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.4956733, y: 0.080043554}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -120,12 +130,12 @@ TextureImporter:
       name: pacman_board_A_2
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1023
         y: 1536
         width: 512
         height: 512
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.49351, y: 0.07139015}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,8 +148,8 @@ TextureImporter:
         y: 1536
         width: 512
         height: 512
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.4978366, y: 0.075716734}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,13 +158,13 @@ TextureImporter:
       name: pacman_board_A_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+        x: 44
+        y: 1040
+        width: 449
+        height: 444
+      alignment: 9
+      pivot: {x: 0.48485664, y: 0.22931361}
+      border: {x: 11, y: 0, z: 12, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -162,12 +172,152 @@ TextureImporter:
       name: pacman_board_A_5
       rect:
         serializedVersion: 2
-        x: 512
+        x: 555
+        y: 1031
+        width: 452
+        height: 454
+      alignment: 9
+      pivot: {x: 0.5108166, y: 0.20984364}
+      border: {x: 0, y: 99, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pacman_board_A_6
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 1024
+        width: 312
+        height: 339
+      alignment: 9
+      pivot: {x: 0.5, y: 0.06706333}
+      border: {x: 0, y: 28, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pacman_board_A_7
+      rect:
+        serializedVersion: 2
+        x: 1536
         y: 1024
         width: 512
         height: 512
+      alignment: 9
+      pivot: {x: 0.5021632, y: 0.030286789}
+      border: {x: 0, y: 3, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pacman_board_A_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 503
+        width: 410
+        height: 521
+      alignment: 9
+      pivot: {x: 0.5822067, y: 0.07139003}
+      border: {x: 105, y: 0, z: 94, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pacman_board_A_9
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 512
+        width: 439
+        height: 512
+      alignment: 9
+      pivot: {x: 0.5930233, y: 0.07355344}
+      border: {x: 26, y: 0, z: 151, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pacman_board_A_10
+      rect:
+        serializedVersion: 2
+        x: 1085
+        y: 512
+        width: 377
+        height: 512
+      alignment: 9
+      pivot: {x: 0.5302868, y: 0.080043435}
+      border: {x: 21, y: 0, z: 7, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pacman_board_A_11
+      rect:
+        serializedVersion: 2
+        x: 1611
+        y: 513
+        width: 371
+        height: 484
+      alignment: 9
+      pivot: {x: 0.5886967, y: 0.019469976}
+      border: {x: 9, y: 14, z: 17, w: 9}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pacman_board_A_12
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 64
+        width: 458
+        height: 369
+      alignment: 9
+      pivot: {x: 0.49120784, y: 0.008791736}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pacman_board_A_13
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 64
+        width: 447
+        height: 385
       alignment: 7
       pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pacman_board_A_14
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 19
+        width: 376
+        height: 482
+      alignment: 9
+      pivot: {x: 0.48241544, y: 0.2101365}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pacman_board_A_15
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 0
+        width: 396
+        height: 487
+      alignment: 9
+      pivot: {x: 0.46483135, y: 0.23299247}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -82,7 +82,7 @@ public class GameMngr : MonoBehaviour {
 					}
 					Destroy (MonsterPacman);
 				}
-				MonsterPacman = Instantiate (MonstrePacList [Random.Range (0, 2)], new Vector3 (39f, 1.0f, 0f), Quaternion.identity);
+				MonsterPacman = Instantiate (MonstrePacList [Random.Range (0, 7)], new Vector3 (39f, 1.0f, 0f), Quaternion.identity);
 
 				float pos_X_int = (37f - (WordDict [WordLevel].Length * 1.1f)) / 2.0f;
 				for (int LetterIndex = 0; LetterIndex < WordDict [WordLevel].Length; LetterIndex++) 
@@ -178,7 +178,7 @@ public class GameMngr : MonoBehaviour {
 		}
 
 		Destroy (MonsterPacman);
-		MonsterPacman = Instantiate (MonstrePacList [Random.Range (0, 2)], new Vector3 (39f, 1.0f, 0f), Quaternion.identity);
+		MonsterPacman = Instantiate (MonstrePacList [Random.Range (0, 7)], new Vector3 (39f, 1.0f, 0f), Quaternion.identity);
 
 		TowerFall = 4.0f;
 

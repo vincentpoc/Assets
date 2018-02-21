@@ -2345,6 +2345,11 @@ MonoBehaviour:
   - {fileID: 1515843837712682, guid: aa16bba837668014ea184a7bb82d6696, type: 2}
   - {fileID: 1591739726571534, guid: b5e8af67ce15a324ea294035fdd34949, type: 2}
   - {fileID: 1247562636275572, guid: 364db0678efc4a1419bf7de66451ff1c, type: 2}
+  - {fileID: 1681601821406490, guid: 80dc0847d8bb8874190fdfe722848009, type: 2}
+  - {fileID: 1948007082357352, guid: 20e985579d3d5f044b663ba9ed80c9a9, type: 2}
+  - {fileID: 1928516381627572, guid: b7a07d95f5142a54e88726462d5f26bc, type: 2}
+  - {fileID: 1879783115629042, guid: 3cff903adff7c3d4eb087a37e5e89c97, type: 2}
+  - {fileID: 1601946178441580, guid: cdad06d0b23971540a414e155a5befb4, type: 2}
   cloudPuff: {fileID: 1098161338143856, guid: 320238508ae2066428421cc63cb09bcc, type: 2}
   Tower: {fileID: 89806720}
   TowerMask: {fileID: 1322602130}
