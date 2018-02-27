@@ -71,11 +71,12 @@ public class Monstre_script : MonoBehaviour {
 		} else {
 			JumpHold = true;
 			if (JumpHoldTime > JumpHoldMax + GlobalValue.instance.LevelScale * 0.5) { //GlobalValue.instance.JumpTime
-				AttSpeedFactor = 1f * GlobalValue.instance.LevelScale;
+				AttSpeedFactor = GlobalValue.instance.LevelScale;
 				JumpHoldTime = 0;
 			}
 			//keyHelper.GetComponent<SpriteRenderer> ().color = new Color(1f,1f,1f);
 		}
+
 		transform.localScale = new Vector3 (ScaleInit, ScaleInit + sinF * JumpSquash * GlobalValue.instance.JumpScale, 1f);
 		transform.position = new Vector3( (transform.position.x + AttSpeed * AttSpeedFactor * Time.deltaTime * GlobalValue.instance.LevelScale), posInitY + JumpFactor * AttSpeedFactor * GlobalValue.instance.JumpScale, 0f);
 		//transform.rotation(Quaternion.identity);

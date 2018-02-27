@@ -18,24 +18,22 @@ public class GameMngr : MonoBehaviour {
 	public GameObject[] MonstrePacList;
 	public GameObject cloudPuff;
 	public GameObject Tower;
-	public GameObject TowerMask;
 	public TextAsset WordDicFile;
 	public Text UItext;
 	public Text Gameover;
 	public Slider mainSlider;
 	public Slider jumpSlider;
+	public List <Sprite> CakeState;
 
 	private GameObject MonsterPacman;
 	private List <string> SpawMonster = new List<string> ();
 	private List <string> MonstreIndex = new List<string>();
 	private List <string> WordDict = new List<string>();
 	private int WordLevel = 0;
-	//private int LetterIndex = 0;
 
 	private float timeLeft = 0f;
 	private int monsterID = 0;
-	private float TowerFall = 0f;
-	private int Life = 12;
+	private int Life = 4;
 
 	void Start(){
 
@@ -58,54 +56,58 @@ public class GameMngr : MonoBehaviour {
 		*/
 
 		string WordDictText = WordDicFile.text.ToString ();
-		string[] WordDictList = WordDictText.Split(' ');
+		string[] WordDictList = WordDictText.Split('#');
 		foreach (string w in WordDictList) {
 			WordDict.Add (w);
 		}
-		UItext.text = "Level " + WordLevel.ToString ();
 	}
 
 	void Update () 
 	{
 		timeLeft -= Time.deltaTime;
 
-		GlobalValue.instance.LevelScale = mainSlider.value;
+		//GlobalValue.instance.LevelScale = mainSlider.value;
 		GlobalValue.instance.JumpScale = jumpSlider.value;
 
 		if (Life > 0) 
 		{
-			if (timeLeft < 0 && SpawMonster.Count == 0) {
+			if (SpawMonster.Count == 0) {
 				if (MonsterPacman != null) {
 					for (int z = 1; z < 6; z++) {
-						GameObject cloudPuffInst = Instantiate (cloudPuff, MonsterPacman.transform.position + new Vector3 (0f, 2f, 0f), Quaternion.identity);
-						SpriteRenderer cloudPuffColor = cloudPuffInst.GetComponent<SpriteRenderer> ();
+						Instantiate (cloudPuff, MonsterPacman.transform.position + new Vector3 (0f, 2f, 0f), Quaternion.identity);
+						//SpriteRenderer cloudPuffColor = cloudPuffInst.GetComponent<SpriteRenderer> ();
 					}
 					Destroy (MonsterPacman);
 				}
-				MonsterPacman = Instantiate (MonstrePacList [Random.Range (0, 7)], new Vector3 (39f, 1.0f, 0f), Quaternion.identity);
 
-				float pos_X_int = (37f - (WordDict [WordLevel].Length * 1.1f)) / 2.0f;
-				for (int LetterIndex = 0; LetterIndex < WordDict [WordLevel].Length; LetterIndex++) 
-				{		
-					int letterID = MonstreIndex.IndexOf (WordDict [WordLevel] [LetterIndex].ToString ());
+				if ( timeLeft < 0 ){
+					
+					MonsterPacman = Instantiate (MonstrePacList [Random.Range (0, 7)], new Vector3 (39f, 1.0f, 0f), Quaternion.identity);
 
-					if (letterID != -1) 
-					{
-						GameObject MonsterObject = Instantiate (MonstreLettre [letterID], new Vector3 (pos_X_int + (1.1f * LetterIndex), 16f, 0f), Quaternion.identity);
+					int wordpicker = Random.Range (0, WordDict.Count);
+					float pos_X_int = (37f - (WordDict [wordpicker].Length * 1.1f)) / 2.0f;
+					for (int LetterIndex = 0; LetterIndex < WordDict [wordpicker].Length; LetterIndex++) 
+					{		
+						int letterID = MonstreIndex.IndexOf (WordDict [wordpicker] [LetterIndex].ToString ().ToLower());
 
-						MonsterObject.name += monsterID;
-						MonsterObject.GetComponent<SpriteRenderer> ().color = new Color (Random.Range (0.25f, 1f), Random.Range (0.25f, 1f), Random.Range (0.25f, 1f));
-						SpawMonster.Add (MonsterObject.name);
-						monsterID++;
+						if (letterID != -1) 
+						{
+							GameObject MonsterObject = Instantiate (MonstreLettre [letterID], new Vector3 (pos_X_int + (1.1f * LetterIndex), 16f, 0f), Quaternion.identity);
+
+							MonsterObject.name += monsterID;
+							MonsterObject.GetComponent<SpriteRenderer> ().color = new Color (Random.Range (0.25f, 1f), Random.Range (0.25f, 1f), Random.Range (0.25f, 1f));
+							SpawMonster.Add (MonsterObject.name);
+							monsterID++;
+						}
 					}
+					WordDict.RemoveAt (wordpicker);
+					//timeLeft = GlobalValue.instance.SpawnTime + 1f;
+
+					WordLevel++;
+					GlobalValue.instance.LevelScale = Mathf.Max(GlobalValue.instance.LevelScale + 0.1f,1f);
+					UItext.text = "Level " + WordLevel.ToString ();
 				}
-
-				timeLeft = GlobalValue.instance.SpawnTime + 2f;
-
-				WordLevel++;
-				UItext.text = "Level " + WordLevel.ToString ();
 			}
-
 
 		}
 		//--------------------------------------------- DESTROY LETTER ON KEY PRESS ---------------------------//
@@ -120,7 +122,7 @@ public class GameMngr : MonoBehaviour {
 						for (int i = 0; i < SpawMonster.Count; i++) 
 						{
 							string gName = SpawMonster [i] [0].ToString ();
-							string letter = c.ToString ();
+							string letter = c.ToString ().ToLower();
 
 							if (isUnique && gName == letter) 
 							{
@@ -130,17 +132,11 @@ public class GameMngr : MonoBehaviour {
 								{
 									for (int z = 1; z < 6; z++) 
 									{
-										GameObject cloudPuffInst = Instantiate (cloudPuff, TargetLetter.transform.position + new Vector3(0f,2f,0f), Quaternion.identity);
-										SpriteRenderer cloudPuffColor = cloudPuffInst.GetComponent<SpriteRenderer>();
-										cloudPuffColor.color = TargetLetter.GetComponent<SpriteRenderer> ().color;
+										Instantiate (cloudPuff, TargetLetter.transform.position, Quaternion.identity);
 									}
 
 									SpawMonster.RemoveAt (i);
 									Destroy (TargetLetter);
-
-									//REset keyboard helper
-									//GameObject keyHelper = GameObject.Find(gName.ToUpper() + "_key");
-									//keyHelper.GetComponent<SpriteRenderer> ().color = new Color (1f,1f,1f);
 
 									isUnique = false;
 									break;
@@ -148,46 +144,36 @@ public class GameMngr : MonoBehaviour {
 							}
 						}
 						//-----------------------------------------------//
-						if (!isUnique)
+						if (!isUnique) {
 							break;
+						}
 					}
+				}
+
+				if (isUnique) {
+					Debug.Log ("Malus");
+					MonsterPacman.transform.position += new Vector3(-1.0f,0.0f,0.0f);
+					//GlobalValue.instance.LevelScale += 0.1f;
 				}
 			}
 		}
 
-		if ( TowerFall > 0 ){
-			Tower.transform.Translate (Vector3.down * 0.25f);		
-			//Tower.transform.Translate (Vector3.left * Mathf.Sin(TowerFall * 0.5f) * 0.4f);
-			TowerFall --;
 
-		}
 	}
 
 	//----------------------------------------------------- Monster hit the tower --------------------------------------------//
 	void OnTriggerEnter2D( Collider2D MonstreEntry){
-		
-		//int MonsterID = SpawMonster.IndexOf(MonstreEntry.name);
-
-		//string letter = MonstreEntry.name [0].ToString ();
-		//GameObject keyHelper = GameObject.Find(letter.ToUpper() + "_key");
-		//keyHelper.GetComponent<SpriteRenderer> ().color = new Color (1f,1f,1f);
-
-		//------------------------------ Tower puff explosion
-		for (int z = 1; z < 10; z++) {
-			Instantiate (cloudPuff, TowerMask.transform.position + new Vector3(z - 5f, 0f, 0f), Quaternion.identity);
-		}
-
-		Destroy (MonsterPacman);
-		MonsterPacman = Instantiate (MonstrePacList [Random.Range (0, 7)], new Vector3 (39f, 1.0f, 0f), Quaternion.identity);
-
-		TowerFall = 4.0f;
 
 		Life--;
-		Debug.Log (Life);
-		if (Life <= 0) {
-
+		//Debug.Log (Life);
+		//Debug.Log (CakeState[Life]);
+		if (Life < 0) {
+			//MonsterPacman.GetComponent<Monstre_script>().enabled = false;
 			Gameover.color = Color.white;
-
+		} else {
+			Destroy (MonsterPacman);
+			MonsterPacman = Instantiate (MonstrePacList [Random.Range (0, 7)], new Vector3 (39f, 1.0f, 0f), Quaternion.identity);
+			Tower.GetComponent<SpriteRenderer>().sprite = CakeState[Life];
 		}
 	}
 }
