@@ -58,7 +58,7 @@ public class GameMngr : MonoBehaviour {
 		string WordDictText = WordDicFile.text.ToString ();
 		string[] WordDictList = WordDictText.Split('#');
 		foreach (string w in WordDictList) {
-			WordDict.Add (w);
+			WordDict.Add(w);
 		}
 	}
 
@@ -82,10 +82,10 @@ public class GameMngr : MonoBehaviour {
 
 				if ( timeLeft < 0 ){
 					
-					MonsterPacman = Instantiate (MonstrePacList [Random.Range (0, 7)], new Vector3 (39f, 1.0f, 0f), Quaternion.identity);
+					MonsterPacman = Instantiate (MonstrePacList [Random.Range (0, MonstrePacList.Length)], new Vector3 (37f, 1.0f, 0f), Quaternion.identity);
 
 					int wordpicker = Random.Range (0, WordDict.Count);
-					float pos_X_int = (37f - (WordDict [wordpicker].Length * 1.1f)) / 2.0f;
+					float pos_X_int = (35f - (WordDict [wordpicker].Length * 1.1f)) / 2.0f;
 					for (int LetterIndex = 0; LetterIndex < WordDict [wordpicker].Length; LetterIndex++) 
 					{		
 						int letterID = MonstreIndex.IndexOf (WordDict [wordpicker] [LetterIndex].ToString ().ToLower());

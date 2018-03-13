@@ -1240,7 +1240,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 708735823}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.2952113, y: -3.0519803, z: 0}
+  m_LocalPosition: {x: -6.28, y: -4.25, z: 0}
   m_LocalScale: {x: 0.4468492, y: 0.4468492, z: 0.4468492}
   m_Children: []
   m_Father: {fileID: 951574110}
@@ -1258,7 +1258,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.96505404, y: 5.320978}
+  m_Offset: {x: -0.008515358, y: 9.208848}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -1269,7 +1269,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.779893, y: 17.948803}
+  m_Size: {x: 8.101059, y: 21.157835}
   m_EdgeRadius: 0
 --- !u!1 &766916795
 GameObject:
@@ -2393,6 +2393,13 @@ MonoBehaviour:
   - {fileID: 1928516381627572, guid: b7a07d95f5142a54e88726462d5f26bc, type: 2}
   - {fileID: 1879783115629042, guid: 3cff903adff7c3d4eb087a37e5e89c97, type: 2}
   - {fileID: 1601946178441580, guid: cdad06d0b23971540a414e155a5befb4, type: 2}
+  - {fileID: 1946580877499832, guid: 13c747072da9a5e42abcf3e531a937d5, type: 2}
+  - {fileID: 1129788716835010, guid: 41f074d4e8a3d1f408ff20f08e47682b, type: 2}
+  - {fileID: 1246186079169574, guid: 2d83bc8ced1e6bb46bf4e7036359109b, type: 2}
+  - {fileID: 1058327429061956, guid: 498e17ed3b1f2e04a86132316cad9e94, type: 2}
+  - {fileID: 1990086577416866, guid: 92104cba59e4b4b41b072d5a90acdc9e, type: 2}
+  - {fileID: 1708748935065720, guid: 72c6ace794495fb4388e9e1084562f13, type: 2}
+  - {fileID: 1899034228039468, guid: 44f7485e25c9a214ca5d46efb2230637, type: 2}
   cloudPuff: {fileID: 1098161338143856, guid: 320238508ae2066428421cc63cb09bcc, type: 2}
   Tower: {fileID: 708735823}
   WordDicFile: {fileID: 4900000, guid: 3cc8e76038868554faf395a28cc0f129, type: 3}

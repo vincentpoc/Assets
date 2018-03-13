@@ -43,7 +43,7 @@ public class Monstre_script : MonoBehaviour {
 		AttSpeed = GlobalValue.instance.AttSpeed * -1f;
 		JumpHoldMax = 1;
 
-		posInitY = 4f;
+		posInitY = 1f;
 		ScaleInit = this.transform.localScale.x;
 		JumpHold = true;
 		JumpHoldTime = GlobalValue.instance.JumpTime;
